@@ -1,0 +1,33 @@
+ 
+    // by rakhimbayev
+ 
+#include <bits/stdc++.h>
+
+#define fi first
+#define se second
+#define ll long long
+#define sz(x) (int)x.size()
+#define all(x) x.begin(), x.end()
+ 
+using namespace std;
+ 
+const int E9 = (int) 1e9;
+const int N = (int) 5e5+7;
+const ll INF = (ll) 1e18;
+
+// complexity: O(log(N))
+
+int rec(int a, int n)
+{
+    if (n == 0) return 1;
+    if (n % 2) return rec(a, n - 1) * a;
+    int b = rec(a, n / 2);
+    return b * b;
+}
+
+int main() 
+{
+    int a, n;
+    cin >> a >> n;
+    cout << rec(a, n);
+}
