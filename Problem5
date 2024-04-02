@@ -1,0 +1,35 @@
+ 
+    // by rakhimbayev
+ 
+#include <bits/stdc++.h>
+
+#define fi first
+#define se second
+#define ll long long
+#define sz(x) (int)x.size()
+#define all(x) x.begin(), x.end()
+ 
+using namespace std;
+ 
+const int E9 = (int) 1e9;
+const int N = (int) 5e5+7;
+const ll INF = (ll) 1e18;
+
+int ans[N];
+// complexity: O(N)
+
+int rec(int n)
+{
+    if (n < 0) return 0;
+    if (ans[n]) return ans[n];
+    if (n <= 1) return n;
+    ans[n] = rec(n - 1) + rec(n - 2);
+    return ans[n];
+}
+
+int main() 
+{
+    int n;
+    cin >> n;
+    cout << rec(n);
+}
