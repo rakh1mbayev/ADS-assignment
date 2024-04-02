@@ -1,0 +1,31 @@
+ 
+    // by rakhimbayev
+ 
+#include <bits/stdc++.h>
+
+#define fi first
+#define se second
+#define ll long long
+#define sz(x) (int)x.size()
+#define all(x) x.begin(), x.end()
+ 
+using namespace std;
+ 
+const int E9 = (int) 1e9;
+const int N = (int) 1007;
+const ll INF = (ll) 1e18;
+
+// complexity: O(log(min(a, b)))
+
+int gcd(int a, int b)
+{
+    if (!b) return a;
+    return gcd(b, a % b);
+}
+
+int main() 
+{
+    int a, b;
+    cin >> a >> b;
+    cout << gcd(a, b);
+}
