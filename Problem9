@@ -1,0 +1,39 @@
+ 
+    // by rakhimbayev
+ 
+#include <bits/stdc++.h>
+
+#define fi first
+#define se second
+#define ll long long
+#define sz(x) (int)x.size()
+#define all(x) x.begin(), x.end()
+ 
+using namespace std;
+ 
+const int E9 = (int) 1e9;
+const int N = (int) 1007;
+const ll INF = (ll) 1e18;
+
+// complexity: O(n*max(k,n-k))
+
+ll ans[N][N];
+
+ll rec(ll n, ll k)
+{
+    if (ans[k][n]) return ans[k][n];
+    if (k == n || k == 0) 
+    {
+        ans[k][n] = 1;
+        return 1;
+    }
+    ans[k][n] = rec(n - 1ll, k - 1ll) + rec(n - 1ll, k);
+    return ans[k][n];
+}
+
+int main() 
+{
+    ll n, k;
+    cin >> n >> k;
+    cout << rec(n, k);
+}
