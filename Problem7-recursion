@@ -1,0 +1,41 @@
+ 
+    // by rakhimbayev
+ 
+#include <bits/stdc++.h>
+
+#define fi first
+#define se second
+#define ll long long
+#define sz(x) (int)x.size()
+#define all(x) x.begin(), x.end()
+ 
+using namespace std;
+ 
+const int E9 = (int) 1e9;
+const int N = (int) 1007;
+const ll INF = (ll) 1e18;
+
+bool us[N];
+string s;
+
+void rec(int pos, string res)
+{
+    if (sz(res) == sz(s))
+    {
+        cout << res << '\n';
+        return;
+    }
+    for (int i = 0; i < sz(s); ++i)
+    {
+        if (us[i]) continue;
+        us[i] = true;
+        rec(pos + 1, res + s[i]);
+        us[i] = false;
+    }
+}
+
+int main() 
+{
+    cin >> s;
+    rec(0, "");
+}
