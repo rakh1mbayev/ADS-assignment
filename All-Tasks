@@ -1,0 +1,137 @@
+ 
+    // by rakhimbayev
+ 
+#include <bits/stdc++.h>
+
+#define fi first
+#define se second
+#define ll long long
+#define sz(x) (int)x.size()
+#define all(x) x.begin(), x.end()
+ 
+using namespace std;
+ 
+const int E9 = (int) 1e9;
+const int N = (int) 1007;
+const ll INF = (ll) 1e18;
+
+int a[N];
+
+// complexity: linear - O(N)
+
+int task1(int n)
+{
+    int res = E9;
+    for (int i = 1; i <= n; ++i)
+    {
+        res = min(res, a[i]);
+    }
+    return res;
+}
+
+// complexity: linear - O(N)
+
+double task2(double n)
+{
+    double sum = 0;
+    for (int i = 1; i <= n; ++i)
+    {
+        sum += a[i];
+    }
+    return sum / n;
+}
+
+// complexity: O(sqrt(n))
+
+bool task3(int n)
+{
+    int m = sqrt(n);
+    for (int i = 2; i <= m; ++i)
+    {
+        if (n % i == 0) return true;
+    }
+    return false;
+}
+
+
+// complexity: O(N)
+
+int task4(int n)
+{
+    if (n < 0) return 0;
+    if (n <= 1) return 1;
+    return task4(n - 1) * n;
+}
+
+int ans[N];
+// complexity: O(N)
+
+int task5(int n)
+{
+    if (n < 0) return 0;
+    if (ans[n]) return ans[n];
+    if (n <= 1) return n;
+    ans[n] = task5(n - 1) + task5(n - 2);
+    return ans[n];
+}
+
+// complexity: O(log(N))
+
+int task6(int a, int n)
+{
+    if (n == 0) return 1;
+    if (n % 2) return task6(a, n - 1) * a;
+    int b = task6(a, n / 2);
+    return b * b;
+}
+
+// complexity: O(!N)
+
+void task7(string &s)
+{
+    sort(s.begin(), s.end());
+    do
+    {
+        std::cout << s << '\n';
+    }while(std::next_permutation(s.begin(), s.end()));
+}
+
+// complexity: O(N)
+
+bool task8(string &s)
+{
+    for (int i = 0; i < sz(s); ++i)
+    {
+        if ('0' > s[i] || s[i] > '9') return false;
+    }
+    return true;
+}
+
+// complexity: O(n*max(k,n-k))
+
+ll res[N][N];
+
+ll task9(ll n, ll k)
+{
+    if (res[k][n]) return res[k][n];
+    if (k == n || k == 0) 
+    {
+        res[k][n] = 1;
+        return 1;
+    }
+    res[k][n] = task9(n - 1ll, k - 1ll) + task9(n - 1ll, k);
+    return res[k][n];
+}
+
+// complexity: O(log(min(a, b)))
+
+int task10(int a, int b)
+{
+    if (!b) return a;
+    return task10(b, a % b);
+}
+
+int main() 
+{
+
+}
